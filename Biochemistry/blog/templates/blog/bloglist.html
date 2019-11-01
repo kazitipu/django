@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}		
+	
+	<a id='backTop'>Back To Top</a>
+	<!-- /Back To Top -->
+	
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="archives-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					{% for blog in blog_list %}
+					<article class="box-shadow">
+						<div class="art-header">
+							<a href="#"><h2>{{ blog.title }}</h2></a>
+							<div class="info">By <a href="#"> {{ blog.user }} </a> {{ blog.publish_date }} </div>
+						</div>
+						<div class="art-content">
+							<img src="{{ blog.image.url }}" />
+							<p> {{ blog.content }} </p>
+							<a class="btn btn-lg btn-2 box-shadow" href="{{ blog.get_absolute_url }}">Read More</a>
+						</div>
+					</article>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="page-content" class="archives-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					<article class="box-shadow">
+						<div class="art-header">
+							<a href="#"><h2>{{ blog.title }}</h2></a>
+							<div class="info">By <a href="#"> {{ blog.user }} </a> {{ blog.publish_date }} </div>
+						</div>
+						<div class="art-content">
+							<img src="{% static 'images/7.jpg' %}" />
+                            <p> {{ blog.content }} </p>
+                            {% if request.user.is_authenticated %}
+                            <a class="btn btn-lg btn-2 box-shadow" href="{{ blog.get_edit_url }}">Edit</a>
+                            <a class="btn btn-lg btn-2 box-shadow" href="{{ blog.get_delete_url }}">Delete</a>
+                            <a class="btn btn-lg btn-2 box-shadow" href="/blog-new/">Create new blog</a>
+                            {% endif %}
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+{% endblock %}

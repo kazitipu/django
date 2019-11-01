@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}	
+{% load crispy_forms_tags %}
+
+	<a id='backTop'>Back To Top</a>
+	<!-- /Back To Top -->
+	
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="archives-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					<article class="box-shadow">
+						<div class="row">
+							<div class="col-md-8">
+								<h3> share your thought here </h3>
+								<div class="form-group">
+								<form method='POST' action='.' enctype="multipart/form-data"> {% csrf_token %}
+										{{ form|crispy }}
+										<div class="row">
+												<div class="col-md-12">
+										<button type="submit" class="btn btn-lg btn-2 box-shadow">Submit</button>
+												</div>
+										</div>
+									</form> 
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+{% endblock %}

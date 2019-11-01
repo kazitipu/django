@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class='row'>
+  <div class="container">
+    <div class='col-12 col-8 mx-auto'>
+                {% if query %}
+
+                     <p class='lead'>You searched for {{ query }}</p>
+                {% else %}
+
+                    <form class="form-inline my-2 my-lg-0" action='/search/'>
+                  <input class="form-control mr-sm-2" type="search" name='q' placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                {% endif %}
+
+
+              </div>
+            </div>
+
+
+            </div>
+            
+
+               
+            <a id='backTop'>Back To Top</a>
+            <!-- /Back To Top -->
+            
+            <!-- /////////////////////////////////////////Content -->
+            <div id="page-content" class="archives-page">
+              <div class="container">
+                <div class="row">
+                  <div id="main-content">
+                    {% for blog in blog_list %}
+                    <article class="box-shadow">
+                      <div class="art-header">
+                        <a href="#"><h2>{{ blog.title }}</h2></a>
+                        <div class="info">By <a href="#"> {{ blog.user }} </a> {{ blog.publish_date }} </div>
+                      </div>
+                      <div class="art-content">
+                        <img src="{% static 'images/7.jpg' %}" />
+                        <p> {{ blog.content }} </p>
+                        <a class="btn btn-lg btn-2 box-shadow" href="{{ blog.get_absolute_url }}">Read More</a>
+                      </div>
+                    </article>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <!-- /////////////////////////////////////////Content -->
+            <div id="page-content" class="service-page">
+              <div class="container">
+                <div id="main-content">
+                  <div class="row">
+                    {% for donor in donors %}
+                    <div class="col-md-4">
+                      <article class="box-shadow text-center">
+                        <div class="art-header">	
+                          <div class="zoom-container">
+                            <img class="example-image" src="{% static 'images/10.jpg' %}" alt=""/>
+                          </div>
+                        </div>
+                        <div class="art-content">
+                          <h3>{{donor.name}}</h3>
+                          <h5>{{donor.blood_group}}</h5>
+                          <div class="text-left">
+                          Department: {{donor.department|truncatewords:2}} <br>
+                          Address: {{donor.address}} <br>
+                          Contact no: {{donor.contact_no}} <br>
+                          </div>
+                          <a class="btn btn-lg btn-2 box-shadow" href="{{ donor.get_absolute_url }}">Show details</a>
+                        </div>
+                      </article>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+		
+            </div>
+          
+
+{% endblock %}
